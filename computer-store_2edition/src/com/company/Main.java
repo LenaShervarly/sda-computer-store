@@ -32,9 +32,9 @@ public class Main {
             computerStore.addComputer(computer);
         }
 
-        computerStore.findMostExpensiveComputerV1();
-        computerStore.findMostExpensiveComputerV2();
-        computerStore.findMostExpensiveComputerV3();
-        computerStore.findMostExpensiveComputerV4();
+        System.out.println(computerStore.findMostExpensiveComputerV1());
+        System.out.println(computerStore.findMostExpensiveComputerV2());
+        System.out.println(computerStore.findMostExpensiveComputerV3());
+        System.out.println(computerStore.findMostExpensiveComputerV4());
     }
 }

@@ -6,6 +6,7 @@ import java.util.Iterator;
 
 /**
  * Created by lena on 29.01.2017.
+ * Computer Store class provides the possibility to store computers in the collection, print information about them and finding the most expensive computer within the computer store.
  */
 public class ComputerStore {
     private ArrayList<Computer> computers;
@@ -83,109 +84,105 @@ public class ComputerStore {
      *
      * @return the most expensive computer with a traditional for loop
      */
-    public void findMostExpensiveComputerV1( )
+    public Computer findMostExpensiveComputerV1( )
     {
         if(checkingItemsInStore()) {
             Date startTime = new Date();
             for (int i = 0; i < computers.size(); i++) {
-                if (currentMostExpensive.getTotalCost() > computers.get(i).getTotalCost())
-                    currentMostExpensive = currentMostExpensive;
-                else {
-                    currentMostExpensive = computers.get(i);
-                    //return currentMostExpensive;
-                }
+                return (currentMostExpensive.getTotalCost() > computers.get(i).getTotalCost()) ? currentMostExpensive : computers.get(i);
             }
             Date endTime = new Date();
             long timeToRealiseForLoop = endTime.getTime() - startTime.getTime();
-            System.out.println(currentMostExpensive.getComputerSummay() + "Finding the most expensive computer with for loop takes " + timeToRealiseForLoop);
-            //return currentMostExpensive;
+
+            System.out.println(currentMostExpensive.getComputerSummay() +
+                    ". Finding the most expensive computer with for loop takes " + timeToRealiseForLoop);
+            return currentMostExpensive;
         }
         else {
             System.out.println("the store is empty");
-            //return null;
+            return null;
         }
     }
     /**
      *
      * @return the most expensive computer with a traditional while loop
      */
-    public void findMostExpensiveComputerV2( )
+    public Computer findMostExpensiveComputerV2( )
     {
         if(checkingItemsInStore()) {
             Date startTime = new Date();
             int index = 0;
             while (index < computers.size()) {
                 if (currentMostExpensive.getTotalCost() > computers.get(index).getTotalCost()) {
-                    currentMostExpensive = currentMostExpensive;
                     index++;
+                    return currentMostExpensive;
                 } else {
                     currentMostExpensive = computers.get(index);
                     index++;
-                    //return currentMostExpensive;
+                    return currentMostExpensive;
                 }
             }
             Date endTime = new Date();
             long timeToRealiseWhileLoop = endTime.getTime() - startTime.getTime();
-            System.out.println(currentMostExpensive.getComputerSummay() + ". Finding the most expensive computer with while loop takes " + timeToRealiseWhileLoop);
-            //return currentMostExpensive;
+
+            System.out.println(currentMostExpensive.getComputerSummay() +
+                    ". Finding the most expensive computer with while loop takes " + timeToRealiseWhileLoop);
+            return currentMostExpensive;
         }
         else {
             System.out.println("the store is empty");
-            //return null;
+            return null;
         }
     }
     /**
      *
      * @return the most expensive computer with a  for-each loop
      */
-    public void findMostExpensiveComputerV3( )
+    public Computer findMostExpensiveComputerV3( )
     {
         if(checkingItemsInStore()) {
             Date startTime = new Date();
             for (Computer comp : computers) {
-                if (currentMostExpensive.getTotalCost() > comp.getTotalCost())
-                    currentMostExpensive = currentMostExpensive;
-                else {
-                    currentMostExpensive = comp;
-                    //return currentMostExpensive;
-                }
+                return (currentMostExpensive.getTotalCost() > comp.getTotalCost()) ? currentMostExpensive : comp;
             }
             Date endTime = new Date();
             long timeToRealiseForEachLoop = endTime.getTime() - startTime.getTime();
-            System.out.println(currentMostExpensive.getComputerSummay() + ". Finding the most expensive computer with for-each loop takes " + timeToRealiseForEachLoop);
-            //return currentMostExpensive;
+
+            System.out.println(currentMostExpensive.getComputerSummay() +
+                    ". Finding the most expensive computer with for-each loop takes " + timeToRealiseForEachLoop);
+            return currentMostExpensive;
         }
         else {
             System.out.println("the store is empty");
-            //return null;
+            return null;
         }
-
     }
     /**
      *
      * @return the most expensive computer with an Iterator object with a while loop
+     * ## I suggest this method being the most effective for future development of the shop.
+     * For 3 computers in the store all searching options providing the results really fast.
+     * However, considering future development and possibility of using different collection type,
+     * this method will accurately and quickly work in any case. ##
      */
-    public void findMostExpensiveComputerV4( ) {
+    public Computer findMostExpensiveComputerV4( ) {
         if (checkingItemsInStore()) {
             Date startTime = new Date();
             Iterator<Computer> it = computers.iterator();
             while (it.hasNext()) {
                 Computer comp = it.next();
-                if (currentMostExpensive.getTotalCost() > comp.getTotalCost())
-                    currentMostExpensive = currentMostExpensive;
-                else {
-                    currentMostExpensive = comp;
-                    //return currentMostExpensive;
-                }
+                return  (currentMostExpensive.getTotalCost() > comp.getTotalCost()) ? currentMostExpensive : comp;
             }
             Date endTime = new Date();
             long timeToRealiseIterator = endTime.getTime() - startTime.getTime();
-            System.out.println(currentMostExpensive.getComputerSummay() + "Finding the most expensive computer with Iterator takes " + timeToRealiseIterator);
-            //return currentMostExpensive;
+
+            System.out.println(currentMostExpensive.getComputerSummay() +
+                    ". Finding the most expensive computer with Iterator takes " + timeToRealiseIterator);
+            return currentMostExpensive;
         }
         else {
             System.out.println("the store is empty");
-            //return null;
+            return null;
         }
     }
 }
