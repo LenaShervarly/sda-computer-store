@@ -5,7 +5,7 @@ import java.security.InvalidParameterException;
 /**
  * Created by elena on 28.01.2017.
  */
-public class Display {
+public class Display extends Component {
     private int screenDiagonal;
     private String manufacturer;
     private double cost;
@@ -72,7 +72,7 @@ public class Display {
             throw new IllegalArgumentException(updatedCost + " out of range. Must be in the range 1 ...");
     }
 
-    public String getSummary()
+    public String getDescription()
     {
         return "- the Display: the manufacturer of this Display is " + getManufacturer() + ", the screen diagonal is " + getScreenDiagonal() + ", the cost of the display is " + getCost()+ "\n";
     }

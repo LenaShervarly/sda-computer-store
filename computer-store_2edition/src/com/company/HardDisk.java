@@ -7,7 +7,7 @@ import java.math.RoundingMode;
  * Created by elena on 28.01.2017.
  * Class HardDrive stores information about Hard Drive of the computer.
  */
-public class HardDisk {
+public class HardDisk extends Component{
     private int storageSpace;
     private int writeSpeed;
     private String manufacturer;
@@ -94,7 +94,7 @@ public class HardDisk {
         else
             throw new IllegalArgumentException(updatedCost + " out of range. Must be in the range 1 ...");
     }
-    public String getSummary()
+    public String getDescription()
     {
         return "- the Hard Disk: the manufacturer of this Hard Disk is " + getManufacturer() + ", the storage space is " + getStorageSpace() + ", the write speed is " + getWriteSpeed()  + ", the cost of the display is " + getCost()+ "\n";
     }

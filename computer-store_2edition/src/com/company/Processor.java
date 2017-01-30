@@ -5,7 +5,7 @@ import java.security.InvalidParameterException;
 /**
  * Created by elena on 28.01.2017.
  */
-public class Processor {
+public class Processor extends Component{
     private String manufacturer;
     private double clockspeed;
     private double cost;
@@ -76,7 +76,7 @@ public class Processor {
         else
             throw new IllegalArgumentException(updatedCost + " out of range. Must be in the range 1 ...");
     }
-    public String getSummary()
+    public String getDescription()
     {
         return "- the Processor: the manufacturer of this Processor is " + getManufacturer() + ", the clock speed is " + getClockspeed() + ", the cost of the processor is " + getCost() + "\n";
     }

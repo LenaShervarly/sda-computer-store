@@ -1,6 +1,8 @@
 package com.company;
 
 
+import java.util.HashMap;
+
 /**
  * Created by elena on 28.01.2017.
  *
@@ -9,38 +11,33 @@ package com.company;
  */
 public class Computer {
 
-    private Processor theProcessor;
-    private HardDisk theHardDisk;
-    private Display theDisplay;
+    private HashMap<String, Component> configuration;
     private String computerSummary;
 
     /**Constructor for Computer. Creates the default computer with default Processor, Hard Disk and Display
      *
      */
     public Computer() {
-        theProcessor = new Processor();
-        theHardDisk = new HardDisk();
-        theDisplay = new Display();
+        configuration = new HashMap<>();
     }
-    public void setProcessor(Processor newProcessor)
+    public void setProcessor(String typeProcessor, Processor newProcessor)
     {
-        theProcessor = newProcessor;
+        configuration.put(typeProcessor, newProcessor);
     }
-    public void setHardDisk(HardDisk newHardDisk)
+    public void setHardDisk(String typeHardDisk, HardDisk newHardDisk)
     {
-        theHardDisk = newHardDisk;
+        configuration.put(typeHardDisk, newHardDisk);
     }
-    public void setDisplay(Display newDisplay)
+    public void setDisplay(String typeDisplay, Display newDisplay)
     {
-        theDisplay = newDisplay;
+        configuration.put(typeDisplay, newDisplay);
     }
     /**
      * @return all the information regarding the Computer components
      */
     public String getComputerSummay()
     {
-        computerSummary = "The computer consists of: " + "\n" + theProcessor.getSummary() + theHardDisk.getSummary() +
-                theDisplay.getSummary() + "\n" + "The total cost of the computer is " + getTotalCost();
+        computerSummary = "The computer consists of: " + "\n" + configuration.toString() + "\n" + "The total cost of the computer is " + getTotalCost();
         return computerSummary;
     }
     /**
@@ -54,7 +51,7 @@ public class Computer {
      */
     public double getTotalCost()
     {
-        double totalCost = theProcessor.getCost() + theDisplay.getCost() + theHardDisk.getCost();
+        double totalCost = 0.0; // = theProcessor.getCost() + theDisplay.getCost() + theHardDisk.getCost();
         return totalCost;
     }
 }
