@@ -34,6 +34,9 @@ public class Component {
             totalCostOfComponents += component.getCost();
         }
         return totalCostOfComponents;
+        dgfgsgs
+        
+        ff
     }
     public int totalCostOfComponents(Component component_type)
     {
