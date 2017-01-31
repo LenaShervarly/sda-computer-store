@@ -4,37 +4,15 @@ public class Main {
 
     public static void main(String[] args) {
 
-        Processor processorAMD = new Processor("AMD", 2.0, 4500.00);
-        //processorAMD.setCost(4500.0);
+    	// create a default basic configuration
+    	Computer myPC = new Computer();
 
-        Processor processorIntel = new Processor("Intel", 1.6, 1500.00);
-        //processorIntel.setCost(1500.0);
+    	// Add a hard disk   
+    	Component hdd1 = new HardDisk(1000, 3, "Seagate", 790.50);
+    	myPC.addComponent("hard disk 1", hdd1);
 
-        Computer comp1 = new Computer();
-        //comp1.printComputerSummary();
-
-        Computer comp2 = new Computer();
-        comp2.setProcessor(processorAMD);
-        //comp2.printComputerSummary();
-
-        Computer comp3 = new Computer();
-        comp3.setProcessor(processorIntel);
-        //comp3.printComputerSummary();
-
-        ComputerStore computerStore = new ComputerStore();
-        computerStore.addComputer(comp1);
-        computerStore.addComputer(comp2);
-        computerStore.addComputer(comp3);
-
-        for(int i = 0; i < 10000; i ++)
-        {
-            Computer computer = new Computer();
-            computerStore.addComputer(computer);
-        }
-
-        System.out.println(computerStore.findMostExpensiveComputerV1());
-        System.out.println(computerStore.findMostExpensiveComputerV2());
-        System.out.println(computerStore.findMostExpensiveComputerV3());
-        System.out.println(computerStore.findMostExpensiveComputerV4());
+    	// Add a second hard disk
+    	Component hdd2 = new HardDisk(1500, 2, "Seagate", 640.69);
+    	myPC.addComponent("hard disk 2", hdd2);
     }
 }

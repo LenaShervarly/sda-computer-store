@@ -1,57 +1,83 @@
 package com.company;
 
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 
 /**
- * Created by elena on 28.01.2017.
- *
  * Class Computer.
  * Its role is to store other objects that model the components of a computer.
+ * 
+ * @author Lena Shervarly
+ * @version 0.3 (31.01.2017)
+ *
+ * 
  */
-public class Computer {
+public class Computer 
+{
 
     private HashMap<String, Component> configuration;
-    private String computerSummary;
 
-    /**Constructor for Computer. Creates the default computer with default Processor, Hard Disk and Display
+    /**Constructor for Computer. Creates the default computer with the possibility to change it configuration further
      *
      */
-    public Computer() {
+    public Computer() 
+    {
         configuration = new HashMap<>();
     }
-    public void setProcessor(String typeProcessor, Processor newProcessor)
+    
+    /**
+     * Method enables to add a Component to the collection of components of the computer
+     * 
+     * @param name specifies the name of the component
+     * @param newComponent represents the component itself to be added to the collection
+     */
+    public void addComponent(String name, Component newComponent)
     {
-        configuration.put(typeProcessor, newProcessor);
+        configuration.put(name, newComponent);
     }
-    public void setHardDisk(String typeHardDisk, HardDisk newHardDisk)
+    
+    /**
+     * Method enables to remove a Component from the collection on the base of it's keyValue (parameter)
+     * 
+     * @param name represents the keyValue to the HashMap configuration. 
+     */
+    public void removeComponent(String name)
     {
-        configuration.put(typeHardDisk, newHardDisk);
+    	configuration.remove(name);
     }
-    public void setDisplay(String typeDisplay, Display newDisplay)
-    {
-        configuration.put(typeDisplay, newDisplay);
-    }
+    
     /**
      * @return all the information regarding the Computer components
      */
     public String getComputerSummay()
     {
-        computerSummary = "The computer consists of: " + "\n" + configuration.toString() + "\n" + "The total cost of the computer is " + getTotalCost();
+        String computerSummary = "The computer consists of: ";
+        for(Map.Entry<String, Component> entry : configuration.entrySet())
+        	computerSummary += "\n" + entry.getKey() + entry.getValue().getDescription();
+        
+        computerSummary += "\n" + "The total cost of the computer is " + getTotalCost();
         return computerSummary;
     }
+    
     /**
      * Prints the Summary of the Computer components with a total cost
      */
-    public void printComputerSummary() {
+    public void printComputerSummary() 
+    {
         System.out.println(getComputerSummay());
     }
+    
     /**
      * @return a total cost of the Computer components in SEK
      */
     public double getTotalCost()
     {
-        double totalCost = 0.0; // = theProcessor.getCost() + theDisplay.getCost() + theHardDisk.getCost();
+    	double totalCost = 0.00;
+    	for(Map.Entry<String, Component> entry : configuration.entrySet())
+    		totalCost += entry.getValue().getCost();
+    	 
         return totalCost;
     }
 }

@@ -3,9 +3,13 @@ package com.company;
 import java.security.InvalidParameterException;
 
 /**
- * Created by elena on 28.01.2017.
+ * The class stores information regarding Displays
+ * 
+ * @author Lena Shervarly
+ * @version 0.3 (28.01.2017)
  */
-public class Display extends Component {
+public class Display extends Component 
+{
     private int screenDiagonal;
     private String manufacturer;
     private double cost;
@@ -30,18 +34,12 @@ public class Display extends Component {
         this.manufacturer = manufacturer;
         this.cost = cost;
     }
+    
     /**
      * @return a size of Screen Diagonal of the Display in inches
      */
     public int getScreenDiagonal() {return screenDiagonal; }
-    public String getManufacturer() { return manufacturer; }
-    /**
-     * @return a total cost of the Display in SEK
-     */
-    public double getCost()
-    {
-        return cost;
-    }
+    
     /**
      *
      * @param newScreenDiagonal sets a size of Screen Diagonal of the Display in inches
@@ -53,25 +51,8 @@ public class Display extends Component {
         else
             throw new IllegalArgumentException(newScreenDiagonal + " out of range. Must be in the range 10 ... ");
     }
-    public void setManufacturer(String newManufacturer)
-    {
-        if(newManufacturer != null)
-            manufacturer = newManufacturer;
-        else
-            throw new IllegalArgumentException("Type the name of the Manufacturer");
-    }
-    /**
-     *
-     * @param updatedCost sets a total cost of the Display in SEK
-     */
-    public void setCost(double updatedCost)
-    {
-        if(updatedCost > 1)
-            cost = updatedCost;
-        else
-            throw new IllegalArgumentException(updatedCost + " out of range. Must be in the range 1 ...");
-    }
-
+    
+    @Override
     public String getDescription()
     {
         return "- the Display: the manufacturer of this Display is " + getManufacturer() + ", the screen diagonal is " + getScreenDiagonal() + ", the cost of the display is " + getCost()+ "\n";
