@@ -13,17 +13,15 @@ public class HardDisk extends Component
 {
     private int storageSpace;
     private int writeSpeed;
-    private String manufacturer;
-    private double cost;
-
+    
     /** Constructor for HardDrive. Automatically initialize the fields of HardDrive with the default values.
      */
     public HardDisk()
     {
         storageSpace = 1000;
         writeSpeed = 3;
-        manufacturer = "WD Scorpio Blue";
-        cost = 689.00;
+        setManufacturer("WD Scorpio Blue");
+        setCost(689.00);
     }
     
     /** Constructor for HardDrive. Initialize the fields of HardDrive with the given values:
@@ -36,8 +34,8 @@ public class HardDisk extends Component
     {
         this.storageSpace = storageSpace;
         this.writeSpeed = writeSpeed;
-        this.manufacturer = manufacturer;
-        this.cost = cost;
+        setManufacturer(manufacturer);
+        setCost(cost);
     }
     
     /**

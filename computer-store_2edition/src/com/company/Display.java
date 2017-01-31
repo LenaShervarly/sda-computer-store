@@ -11,16 +11,15 @@ import java.security.InvalidParameterException;
 public class Display extends Component 
 {
     private int screenDiagonal;
-    private String manufacturer;
-    private double cost;
+    
 
     /** Constructor for Display. Automatically initialize the fields of Display with the default values.
      */
     public Display()
     {
         screenDiagonal = 27;
-        manufacturer = "Dell";
-        cost =  4500.0;
+        setManufacturer("Dell");
+        setCost(4500.0);
     }
 
     /** Constructor for Display. Automatically initialize the fields of Display with the given values.
@@ -31,8 +30,8 @@ public class Display extends Component
     public Display(int screenDiagonal, String manufacturer, double cost)
     {
         this.screenDiagonal = screenDiagonal;
-        this.manufacturer = manufacturer;
-        this.cost = cost;
+        setManufacturer(manufacturer);
+        setCost(cost);
     }
     
     /**

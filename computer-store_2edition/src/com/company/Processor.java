@@ -10,17 +10,15 @@ import java.security.InvalidParameterException;
  */
 public class Processor extends Component
 {
-    private String manufacturer;
     private double clockspeed;
-    private double cost;
-
+    
     /** Constructor for Processor. Automatically initialize the fields of Processor with the default values.
      */
     public Processor()
     {
-        manufacturer = "Intel";
         clockspeed = 1.8;
-        cost =  3000.0;
+        setManufacturer("Intel");
+        setCost(3000.00);
     }
     
     /** Constructor for Processor. Automatically initialize the fields of Processor with the given values:
@@ -30,9 +28,9 @@ public class Processor extends Component
      */
     public Processor(String manufacturer, double clockspeed, double cost)
     {
-        this.manufacturer = manufacturer;
+        setManufacturer(manufacturer);
         this.clockspeed = clockspeed;
-        this.cost = cost;
+        setCost(cost);
     }
    
     /**
