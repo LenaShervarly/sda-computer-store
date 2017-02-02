@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.Iterator;
 import java.util.Map;
 
+
 /**
  * Computer Store class provides the possibility to store computers in the collection, 
  * print information about them and finding the most expensive computer within the computer store.
@@ -111,9 +112,9 @@ public class ComputerStore
     *
     * @return the total cost of all the components within the collection
     */
-   public int totalCostOfComponents( )
+   public double totalCostOfComponents( )
    {
-   	int totalCostOfComponents = 0;
+   	double totalCostOfComponents = 0.0;
    	for(Component component : components)
        {
            totalCostOfComponents += component.getCost();
@@ -127,16 +128,22 @@ public class ComputerStore
    * if the specified type is legal
    * @param component_type - specifies the type of the component, for example "Display", 
    *  whose total Cost you would like to know.
+ * @throws ClassNotFoundException 
+ * @throws IllegalAccessException 
+ * @throws InstantiationException 
    */
-   public int totalCostOfComponents(String component_type)
+   public double totalCostOfComponents(String component_type) throws ClassNotFoundException, InstantiationException, IllegalAccessException
    {
-   	int totalCostOfComponents = 0;
+	   double totalCostOfComponents = 0.0;
+	   Class<?> checkingClass = Class.forName(component_type);
+	   
        for(Component component : components)
-       {
-       	if(component.getClass().getName().equals(component_type))
+       { 	   
+    	   if(checkingClass.isInstance(component))
 	           totalCostOfComponents += component.getCost();
        }
        return totalCostOfComponents;
+       
    }
    
    /**
@@ -157,7 +164,7 @@ public class ComputerStore
      *
      * @return the most expensive computer with a traditional for loop
      */
-    public Computer findMostExpensiveComputerV1( )
+    public Computer findMostExpensiveComputerV1()
     {
         if(checkingItemsInStore()) {
             Date startTime = new Date();
@@ -181,7 +188,7 @@ public class ComputerStore
      *
      * @return the most expensive computer with a traditional while loop
      */
-    public Computer findMostExpensiveComputerV2( )
+    public Computer findMostExpensiveComputerV2()
     {
         if(checkingItemsInStore()) {
             Date startTime = new Date();
@@ -213,7 +220,7 @@ public class ComputerStore
      *
      * @return the most expensive computer with a for-each loop
      */
-    public Computer findMostExpensiveComputerV3( )
+    public Computer findMostExpensiveComputerV3()
     {
         if(checkingItemsInStore()) {
             Date startTime = new Date();
@@ -241,7 +248,7 @@ public class ComputerStore
      * However, considering future development and possibility of using different collection type,
      * this method will accurately and quickly work in any case. ##
      */
-    public Computer findMostExpensiveComputerV4( ) 
+    public Computer findMostExpensiveComputerV4() 
     {
         if (checkingItemsInStore()) {
             Date startTime = new Date();

@@ -4,14 +4,14 @@ import java.security.InvalidParameterException;
 
 /**
  * Class HardDrive stores information about Hard Drive of the computer.
- * 
+ *
  * @author Lena Shervarly
  * @version 0.3 (28.01.2017)
  */
 public class Processor extends Component
 {
     private double clockspeed;
-    
+
     /** Constructor for Processor. Automatically initialize the fields of Processor with the default values.
      */
     public Processor()
@@ -20,7 +20,7 @@ public class Processor extends Component
         setManufacturer("Intel");
         setCost(3000.00);
     }
-    
+
     /** Constructor for Processor. Automatically initialize the fields of Processor with the given values:
      @param manufacturer keeps the name of Processor manufacturer;
      @param clockspeed keeps the clock speed of the Processor in Ghz;
@@ -32,7 +32,7 @@ public class Processor extends Component
         this.clockspeed = clockspeed;
         setCost(cost);
     }
-   
+
     /**
      *
      * @return a clock speed of the Processor in Ghz
@@ -53,10 +53,10 @@ public class Processor extends Component
         else
             throw new IllegalArgumentException(updatedClockspeed + " out of range. Must be in the range 1 ...");
     }
-    
-    @Override 
+
+    @Override
     public String getDescription()
     {
-        return "- the Processor: the manufacturer of this Processor is " + getManufacturer() + ", the clock speed is " + getClockspeed() + ", the cost of the processor is " + getCost() + "\n";
+        return super.getDescription() + "- the Processor: the manufacturer of this Processor is " + getManufacturer() + ", the clock speed is " + getClockspeed() + ", the cost of the processor is " + getCost() + "\n";
     }
 }
