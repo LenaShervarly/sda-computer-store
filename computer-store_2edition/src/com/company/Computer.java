@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+
 /**
  * Class Computer.
  * Its role is to store other objects that model the components of a computer.
@@ -42,20 +43,27 @@ public class Computer
      * Method enables to remove a Component from the collection on the base of it's keyValue (parameter)
      * 
      * @param name represents the keyValue to the HashMap configuration. 
+     * @throws IllegalArgumentException if the collection is empty of the name is invalid 
      */
-    public void removeComponent(String name)
+    public void removeComponent(String name) throws IllegalArgumentException
     {
-    	configuration.remove(name);
+    	if(!configuration.isEmpty() && configuration.containsKey(name))
+    		configuration.remove(name);
+    	else 
+    		throw new IllegalArgumentException("This component of the computer does not exist or the computer is empty");
     }
     
     /**
      * @return all the information regarding the Computer components
      */
-    public String getComputerSummay()
+    public String getComputerSummary()
     {
         String computerSummary = "The computer consists of: ";
-        for(Map.Entry<String, Component> entry : configuration.entrySet())
-        	computerSummary += "\n" + entry.getKey() + entry.getValue().getDescription();
+        if(!configuration.isEmpty())
+	        for(Map.Entry<String, Component> entry : configuration.entrySet())
+	        	computerSummary += "\n" + entry.getKey() + entry.getValue().getDescription();
+        else
+        	computerSummary = "The computer is entry at the moment. Please, choose the components first";
         
         computerSummary += "\n" + "The total cost of the computer is " + getTotalCost();
         return computerSummary;
@@ -66,7 +74,7 @@ public class Computer
      */
     public void printComputerSummary() 
     {
-        System.out.println(getComputerSummay());
+        System.out.println(getComputerSummary());
     }
     
     /**

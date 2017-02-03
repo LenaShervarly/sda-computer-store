@@ -7,21 +7,21 @@ import java.util.Map;
 
 
 /**
- * Computer Store class provides the possibility to store computers in the collection, 
+ * Computer Store class provides the possibility to store computers in the collection,
  * print information about them and finding the most expensive computer within the computer store.
- * 
+ *
  * @author Lena Shervarly
  * @version 0.3 (29.01.2017)
  */
-public class ComputerStore 
+public class ComputerStore
 {
     private ArrayList<Computer> computers;
     private Computer currentMostExpensive;
     private ArrayList<Component> components;
 
     /**
-     * Constructor for objects of class ComputerStore. 
-     * Gives the possibility to work separately with collection of ready-to-use computers 
+     * Constructor for objects of class ComputerStore.
+     * Gives the possibility to work separately with collection of ready-to-use computers
      * and a collection of different computer components.
      */
     public ComputerStore()
@@ -65,7 +65,7 @@ public class ComputerStore
     public void printAllComputers( )
     {
         for(Computer eachComp : computers)
-            System.out.print(eachComp.getComputerSummay());
+            System.out.print(eachComp.getComputerSummary());
     }
 
     /** prints the total cost for all computers
@@ -81,24 +81,24 @@ public class ComputerStore
         }
         System.out.println("The total cost of all computers in the store is " + totalCostComputers + "\n");
     }
-    
+
     /**
      * Method enables to add a new Component to the collection of components within the computer store
-     * 
+     *
      * @param newComponent represents the component to be added to the collection if it's legal
      */
     public void addComponent(Component newComponent)
     {
         if(newComponent instanceof Component)
-           	components.add(newComponent);	
+           	components.add(newComponent);
     }
-    
+
     /**
-     * Method enables to remove a Component from the collection of components 
+     * Method enables to remove a Component from the collection of components
      * within the computer store on the base of it's parameter (index)
-     * 
-     * @param index represents the index within the collection of the components, 
-     * indicating the element to be removed (if index is legal) 
+     *
+     * @param index represents the index within the collection of the components,
+     * indicating the element to be removed (if index is legal)
      */
     public void removeComponent(int index)
     {
@@ -107,7 +107,7 @@ public class ComputerStore
     	else
     		throw new IndexOutOfBoundsException("Index " + index + " is out of bounds!");
     }
-    
+
     /**
     *
     * @return the total cost of all the components within the collection
@@ -121,31 +121,31 @@ public class ComputerStore
        }
        return totalCostOfComponents;
    }
-   
+
    /**
    *
    * @return the total cost of all the components of a specified type (from the parameter) within the collection,
    * if the specified type is legal
-   * @param component_type - specifies the type of the component, for example "Display", 
+   * @param component_type - specifies the type of the component, for example "Display",
    *  whose total Cost you would like to know.
- * @throws ClassNotFoundException 
- * @throws IllegalAccessException 
- * @throws InstantiationException 
+ * @throws ClassNotFoundException
+ * @throws IllegalAccessException
+ * @throws InstantiationException
    */
    public double totalCostOfComponents(String component_type) throws ClassNotFoundException, InstantiationException, IllegalAccessException
    {
 	   double totalCostOfComponents = 0.0;
 	   Class<?> checkingClass = Class.forName(component_type);
-	   
+
        for(Component component : components)
-       { 	   
+       {
     	   if(checkingClass.isInstance(component))
 	           totalCostOfComponents += component.getCost();
        }
        return totalCostOfComponents;
-       
+
    }
-   
+
    /**
      * @return true if the collection of computers is not empty
      */
@@ -159,7 +159,7 @@ public class ComputerStore
             return false;
         }
     }
-    
+
     /**
      *
      * @return the most expensive computer with a traditional for loop
@@ -174,7 +174,7 @@ public class ComputerStore
             Date endTime = new Date();
             long timeToRealiseForLoop = endTime.getTime() - startTime.getTime();
 
-            System.out.println(currentMostExpensive.getComputerSummay() +
+            System.out.println(currentMostExpensive.getComputerSummary() +
                     ". Finding the most expensive computer with for loop takes " + timeToRealiseForLoop);
             return currentMostExpensive;
         }
@@ -183,7 +183,7 @@ public class ComputerStore
             return null;
         }
     }
-    
+
     /**
      *
      * @return the most expensive computer with a traditional while loop
@@ -206,7 +206,7 @@ public class ComputerStore
             Date endTime = new Date();
             long timeToRealiseWhileLoop = endTime.getTime() - startTime.getTime();
 
-            System.out.println(currentMostExpensive.getComputerSummay() +
+            System.out.println(currentMostExpensive.getComputerSummary() +
                     ". Finding the most expensive computer with while loop takes " + timeToRealiseWhileLoop);
             return currentMostExpensive;
         }
@@ -215,7 +215,7 @@ public class ComputerStore
             return null;
         }
     }
-    
+
     /**
      *
      * @return the most expensive computer with a for-each loop
@@ -230,7 +230,7 @@ public class ComputerStore
             Date endTime = new Date();
             long timeToRealiseForEachLoop = endTime.getTime() - startTime.getTime();
 
-            System.out.println(currentMostExpensive.getComputerSummay() +
+            System.out.println(currentMostExpensive.getComputerSummary() +
                     ". Finding the most expensive computer with for-each loop takes " + timeToRealiseForEachLoop);
             return currentMostExpensive;
         }
@@ -239,7 +239,7 @@ public class ComputerStore
             return null;
         }
     }
-    
+
     /**
      *
      * @return the most expensive computer with an Iterator object with a while loop
@@ -248,7 +248,7 @@ public class ComputerStore
      * However, considering future development and possibility of using different collection type,
      * this method will accurately and quickly work in any case. ##
      */
-    public Computer findMostExpensiveComputerV4() 
+    public Computer findMostExpensiveComputerV4()
     {
         if (checkingItemsInStore()) {
             Date startTime = new Date();
@@ -260,7 +260,7 @@ public class ComputerStore
             Date endTime = new Date();
             long timeToRealiseIterator = endTime.getTime() - startTime.getTime();
 
-            System.out.println(currentMostExpensive.getComputerSummay() +
+            System.out.println(currentMostExpensive.getComputerSummary() +
                     ". Finding the most expensive computer with Iterator takes " + timeToRealiseIterator);
             return currentMostExpensive;
         }
